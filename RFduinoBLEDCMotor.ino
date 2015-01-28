@@ -66,5 +66,7 @@ void RFduinoBLE_onReceive(char *data, int len)
 
 void ToggleMotor(int val) {
 	// Change speed accordingly
-	Serial.println(val);
+	int speed = (val-1) * 255 / 10;
+	Serial.println(speed);
+	analogWrite(tip120PIN, speed);
 }
