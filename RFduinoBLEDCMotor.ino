@@ -2,10 +2,11 @@
 
 // interval between advertisement transmissions ms (range is 20ms to 10.24s) - default 20ms
 int interval = 500;  // 675 ms between advertisement transmissions
-int pos = 0;
+int tip120PIN = 2;
 
 void setup() {
-  // led used to indicate that the RFduino is advertising
+	pinMode(tip120PIN, OUTPUT);
+	analogWrite(tip120PIN, 0);
 	Serial.begin(9600);
 
   // this is the data we want to appear in the advertisement
@@ -14,7 +15,7 @@ void setup() {
   // a single byte, then it will truncate the deviceName)
   RFduinoBLE.advertisementData = "ledbtn";
   RFduinoBLE.advertisementInterval = interval;
-  RFduinoBLE.deviceName = "JBLEServo";
+  RFduinoBLE.deviceName = "JBLEDCMotor";
   RFduinoBLE.txPowerLevel = -20;
 
   // change the advertisement interval
